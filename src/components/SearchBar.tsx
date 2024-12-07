@@ -18,6 +18,7 @@ export const SearchBar: React.FC = () => {
     }else{
       resetState();
     }
+    // eslint-disable-next-line
   }, [debounceUsernameSearch]);
 
   return (
