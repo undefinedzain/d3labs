@@ -34,7 +34,9 @@ body::-webkit-scrollbar-thumb {
 }
 
 h1.project-name {
+  margin-top: 64px;
   color: #FFFFFF;
+  margin-bottom: 0;
 }
 
 h2.project-component {
@@ -42,18 +44,41 @@ h2.project-component {
 }
 
 .search-bar {
-  margin: 20px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
 }
 
-.search-bar input {
+.search-container {
+  width: 320px;
+  margin: 20px;
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+.search-container input {
   padding: 8px;
   font-size: 16px;
   border-radius: 12px;
   border: 1px solid #143E7F;
+  width: 100%;
 }
 
-.search-bar input:focus-visible {
+.search-container .loading-indicator {
+  position: absolute;
+  right: 12px;
+}
+
+.search-container input:focus-visible {
   outline: none;
+}
+
+.loading-indicator {
+  animation: spin 1.5s linear infinite;
 }
 
 .project-container {
@@ -66,8 +91,8 @@ h2.project-component {
 
 .project-list {
   background-color: white;
-  max-width: 320px;
-  max-height: 70vh;
+  width: 320px;
+  height: 70vh;
   overflow-y: scroll;
   text-align: left;
   border: 1px solid #143E7F;
@@ -75,13 +100,6 @@ h2.project-component {
   padding: 12px;
   scrollbar-color: #143E7F;
   scrollbar-width: none;
-}
-
-.project-gap {
-  width: 4px;
-  height: 100%;
-  background-color: #FFFFFF;
-  margin: 0 8px;
 }
 
 .readme-container {
@@ -92,13 +110,23 @@ h2.project-component {
 
 .readme-result-container {
   background-color: white;
-  max-height: 70vh;
+  height: 70vh;
   padding: 12px;
   border-radius: 12px;
   color: #333;
   overflow-y: scroll;
   scrollbar-width: none;
   text-align: left;
+}
+
+.readme-loading {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 70vh;
+  background-color: white;
+  border-radius: 12px;
 }
 
 .project-list ul {
@@ -119,6 +147,29 @@ h2.project-component {
   border-radius: 12px;
 }
 
+.empty-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  background-color: white;
+}
+
+.empty-container p {
+  margin-top: 24px;
+}
+
+.loading-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 70vh;
+  border-radius: 12px;
+}
+
 @media (max-width: 768px) {
   .project-container {
     flex-direction: column;
@@ -128,5 +179,15 @@ h2.project-component {
   .readme-container {
     width: 100%;
     border: none;
+  }
+}
+
+/* Keyframe animation for spinning */
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
   }
 }

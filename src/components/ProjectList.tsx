@@ -1,5 +1,6 @@
 import React from "react";
 import { useGithub } from "../contexts/GithubContext";
+import { Empty } from "./Empty";
 
 interface ProjectListProps {
   onProjectClick: (projectName: string) => void;
@@ -8,11 +9,12 @@ interface ProjectListProps {
 export const ProjectList: React.FC<ProjectListProps> = ({ onProjectClick }) => {
   const { repos, repo } = useGithub();
 
-  if (repos.length > 0) {
-    return (
-      <div>
-        <h2 className="project-component">{repos.length} Repo(s) Found</h2>
-        <div className="project-list">
+  return (
+    <div>
+      <h2 className="project-component">Repo List {repos.length > 0 ? `(${repos.length})` : ''}</h2>
+      <div className="project-list">
+        {
+          repos.length > 0 ?
           <ul>
             {repos.map((repoContent, repoIndex) => (
               <li key={repoContent} onClick={() => onProjectClick(repoContent)} className={repo === repoContent ? 'active' : ''}>
@@ -20,10 +22,10 @@ export const ProjectList: React.FC<ProjectListProps> = ({ onProjectClick }) => {
               </li>
             ))}
           </ul>
-        </div>
+          :
+          <Empty text="No repositories" />
+        }
       </div>
-    );
-  }
-
-  return null
+    </div>
+  );
 };

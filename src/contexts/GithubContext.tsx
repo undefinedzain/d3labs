@@ -1,13 +1,15 @@
 import React, { createContext, useState, ReactNode } from "react";
 import axios from "axios";
+import toast from "react-hot-toast";
 
 interface GithubContextProps {
   user: string | null;
   repos: string[];
   repo: string | null;
   readme: string | null;
+  userLoading: boolean;
   searchUser: (username: string) => void;
-  fetchReadme: (repo: string) => void;
+  fetchReadme: (repo: string|null) => void;
   resetState: () => void;
 }
 
@@ -18,6 +20,7 @@ export const GithubProvider: React.FC<{ children: ReactNode }> = ({ children }) 
   const [repos, setRepos] = useState<string[]>([]);
   const [repo, setRepo] = useState<string | null>(null);
   const [readme, setReadme] = useState<string | null>(null);
+  const [userLoading, setUserLoading] = useState(false);
 
   const resetState = () => {
     setRepos([]);
@@ -27,16 +30,29 @@ export const GithubProvider: React.FC<{ children: ReactNode }> = ({ children }) 
 
   const searchUser = async (username: string) => {
     try {
-      const response = await axios.get(`https://api.github.com/users/${username}/repos`);
-      setUser(username);
-      setRepos(response.data.map((repo: { name: string }) => repo.name));
-      setReadme(null); // Clear previous readme data when new user is searched
-    } catch (error) {
-      console.error("User not found");
+      setUserLoading(true)
+      resetState()
+      await axios.get(`https://api.github.com/users/${username}/repos`).then(resp => {
+        setUser(username);
+        setRepos(resp.data.map((repo: { name: string }) => repo.name));
+        setReadme(null);
+        setUserLoading(false)
+      });
+    } catch (error: any) {
+      if (error.response) {
+        if (error.status === 404) {
+          toast.error('User not found')
+        }else{
+          toast.error(error.response.data.message)
+        }
+      }else{
+        toast.error(error.message)
+      }
+      setUserLoading(false)
     }
   };
 
-  const fetchReadme = async (repo: string) => {
+  const fetchReadme = async (repo: string|null) => {
     try {
       const response = await axios.get(`https://api.github.com/repos/${user}/${repo}/readme`, {
         headers: {
@@ -45,13 +61,21 @@ export const GithubProvider: React.FC<{ children: ReactNode }> = ({ children }) 
       });
       setReadme(response.data);
       setRepo(repo);
-    } catch (error) {
-      console.error("Error fetching README", error);
+    } catch (error: any) {
+      if (error.response) {
+        if (error.status === 404) {
+          toast.error('Readme not found')
+        }else{
+          toast.error(error.response.data.message)
+        }
+      }else{
+        toast.error(error.message)
+      }
     }
   };
 
   return (
-    <GithubContext.Provider value={{ user, repos, repo, readme, searchUser, fetchReadme, resetState }}>
+    <GithubContext.Provider value={{ user, repos, repo, readme, userLoading, searchUser, fetchReadme, resetState }}>
       {children}
     </GithubContext.Provider>
   );
