@@ -14,12 +14,12 @@ const App: React.FC = () => {
     return (
         <GithubProvider>
             <div className="App">
-                <h2 className="project-name">GitHub Projects Viewer</h2>
+                <h3 className="project-name">GitHub Projects Viewer</h3>
                 <SearchBar />
                 <div className="project-container">
                     <ProjectList onProjectClick={setSelectedProject} />
                     <div className="readme-container">
-                      <h2 className="project-component">README</h2>
+                      <h4 className="project-component">README</h4>
                       <div className="readme-result-container">
                         <Suspense
                             fallback={
