@@ -18,7 +18,7 @@ const ProjectReadme: React.FC<ProjectReadmeProps> = ({ projectName }) => {
         }
     }, [user, projectName, fetchReadme]);
 
-    return readme ? (
+    return readme && user ? (
         <Markdown
             children={readme}
             components={{

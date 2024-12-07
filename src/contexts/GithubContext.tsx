@@ -26,6 +26,7 @@ export const GithubProvider: React.FC<{ children: ReactNode }> = ({ children }) 
     setRepos([]);
     setReadme(null);
     setRepo(null);
+    setUser(null)
   }
 
   const searchUser = async (username: string) => {

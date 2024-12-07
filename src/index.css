@@ -161,7 +161,11 @@ h4.project-component {
   border-radius: 12px;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 991px) {
+  body{
+    padding: 0px 24px;
+  }
+
   .project-container {
     display: flex;
     flex-direction: column;
@@ -186,6 +190,12 @@ h4.project-component {
 
   .readme-container {
     width: 100%;
+  }
+}
+
+@media (max-width: 768px) {
+  body{
+    padding: 0px 12px;
   }
 }
 
