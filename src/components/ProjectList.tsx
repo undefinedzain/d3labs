@@ -10,7 +10,7 @@ export const ProjectList: React.FC<ProjectListProps> = ({ onProjectClick }) => {
   const { repos, repo } = useGithub();
 
   return (
-    <div>
+    <div className="project-list-container">
       <h4 className="project-component">Repo List {repos.length > 0 ? `(${repos.length})` : ''}</h4>
       <div className="project-list">
         {
