@@ -8,6 +8,11 @@ body {
   background-color: #143E7F;
 }
 
+svg {
+  width: 64px;
+  height: 64px;
+}
+
 .App {
   font-family: Arial, sans-serif;
   text-align: center;
