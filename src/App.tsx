@@ -14,7 +14,7 @@ const App: React.FC = () => {
     return (
         <GithubProvider>
             <div className="App">
-                <h1 className="project-name">GitHub Projects Viewer</h1>
+                <h2 className="project-name">GitHub Projects Viewer</h2>
                 <SearchBar />
                 <div className="project-container">
                     <ProjectList onProjectClick={setSelectedProject} />

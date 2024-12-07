@@ -33,7 +33,7 @@ body::-webkit-scrollbar-thumb {
   text-align: center;
 }
 
-h1.project-name {
+h2.project-name {
   margin-top: 64px;
   color: #FFFFFF;
   margin-bottom: 0;
