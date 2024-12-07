@@ -132,7 +132,8 @@ h4.project-component {
   margin: 2px 0px;
 }
 
-.project-list li:hover, .project-list li.active {
+.project-list li:hover,
+.project-list li.active {
   background-color: #143E7F;
   color: white;
   border-radius: 12px;
@@ -162,7 +163,7 @@ h4.project-component {
 }
 
 @media (max-width: 991px) {
-  body{
+  body {
     padding: 0px 24px;
   }
 
@@ -194,7 +195,7 @@ h4.project-component {
 }
 
 @media (max-width: 768px) {
-  body{
+  body {
     padding: 0px 12px;
   }
 }
@@ -204,6 +205,7 @@ h4.project-component {
   0% {
     transform: rotate(0deg);
   }
+
   100% {
     transform: rotate(360deg);
   }

@@ -6,45 +6,45 @@ import { okaidia } from "react-syntax-highlighter/dist/esm/styles/prism";
 import { Empty } from "./Empty";
 
 interface ProjectReadmeProps {
-    projectName: string | null;
+  projectName: string | null;
 }
 
 const ProjectReadme: React.FC<ProjectReadmeProps> = ({ projectName }) => {
-    const { user, readme, fetchReadme } = useGithub();
+  const { user, readme, fetchReadme } = useGithub();
 
-    useEffect(() => {
-        if (user && projectName) {
-            fetchReadme(projectName);
-        }
-    }, [user, projectName, fetchReadme]);
+  useEffect(() => {
+    if (user && projectName) {
+      fetchReadme(projectName);
+    }
+  }, [user, projectName, fetchReadme]);
 
-    return readme && user ? (
-        <Markdown
-            children={readme}
-            components={{
-                code(props) {
-                    const { children, className, node, ...rest } = props;
-                    const match = /language-(\w+)/.exec(className || "");
-                    return match ? (
-                        <SyntaxHighlighter
-                            {...rest}
-                            PreTag="div"
-                            ref={undefined}
-                            children={String(children).replace(/\n$/, "")}
-                            language={match[1]}
-                            style={okaidia}
-                        />
-                    ) : (
-                        <code {...rest} className={className}>
-                            {children}
-                        </code>
-                    );
-                },
-            }}
-        />
-    ) : (
-        <Empty text="No readme to show" />
-    );
+  return readme && user ? (
+    <Markdown
+      children={readme}
+      components={{
+        code(props) {
+          const { children, className, node, ...rest } = props;
+          const match = /language-(\w+)/.exec(className || "");
+          return match ? (
+            <SyntaxHighlighter
+              {...rest}
+              PreTag="div"
+              ref={undefined}
+              children={String(children).replace(/\n$/, "")}
+              language={match[1]}
+              style={okaidia}
+            />
+          ) : (
+            <code {...rest} className={className}>
+              {children}
+            </code>
+          );
+        },
+      }}
+    />
+  ) : (
+    <Empty text="No readme to show" />
+  );
 };
 
 export default ProjectReadme;
