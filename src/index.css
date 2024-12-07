@@ -5,9 +5,128 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: #143E7F;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+/* Optional: for browsers that don't support ::-webkit-scrollbar */
+body {
+  scrollbar-width: thin; /* For Firefox: makes scrollbar thinner */
+  scrollbar-color: #888 #f1f1f1; /* Scrollbar color for Firefox */
+}
+
+body::-webkit-scrollbar {
+  width: 12px;               /* width of the entire scrollbar */
+}
+
+body::-webkit-scrollbar-track {
+  background: orange;        /* color of the tracking area */
+}
+
+body::-webkit-scrollbar-thumb {
+  background-color: blue;    /* color of the scroll thumb */
+  border-radius: 20px;       /* roundness of the scroll thumb */
+  border: 3px solid orange;  /* creates padding around scroll thumb */
+}
+
+.App {
+  font-family: Arial, sans-serif;
+  text-align: center;
+}
+
+h1.project-name {
+  color: #FFFFFF;
+}
+
+h2.project-component {
+  color: #EACC68;
+}
+
+.search-bar {
+  margin: 20px;
+}
+
+.search-bar input {
+  padding: 8px;
+  font-size: 16px;
+  border-radius: 12px;
+  border: 1px solid #143E7F;
+}
+
+.search-bar input:focus-visible {
+  outline: none;
+}
+
+.project-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+  padding: 12px;
+  column-gap: 1rem;
+}
+
+.project-list {
+  background-color: white;
+  max-width: 320px;
+  max-height: 70vh;
+  overflow-y: scroll;
+  text-align: left;
+  border: 1px solid #143E7F;
+  border-radius: 12px;
+  padding: 12px;
+  scrollbar-color: #143E7F;
+  scrollbar-width: none;
+}
+
+.project-gap {
+  width: 4px;
+  height: 100%;
+  background-color: #FFFFFF;
+  margin: 0 8px;
+}
+
+.readme-container {
+  width: 50%;
+  padding: 20px;
+  padding-top: 0px;
+}
+
+.readme-result-container {
+  background-color: white;
+  max-height: 70vh;
+  padding: 12px;
+  border-radius: 12px;
+  color: #333;
+  overflow-y: scroll;
+  scrollbar-width: none;
+  text-align: left;
+}
+
+.project-list ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.project-list li {
+  padding: 10px;
+  padding-left: 12px;
+  cursor: pointer;
+  margin: 2px 0px;
+}
+
+.project-list li:hover, .project-list li.active {
+  background-color: #143E7F;
+  color: white;
+  border-radius: 12px;
+}
+
+@media (max-width: 768px) {
+  .project-container {
+    flex-direction: column;
+  }
+
+  .project-list,
+  .readme-container {
+    width: 100%;
+    border: none;
+  }
 }

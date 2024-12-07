@@ -1,26 +1,25 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
+import { SearchBar } from "./components/SearchBar";
+import { ProjectList } from "./components/ProjectList";
+import { ProjectReadme } from "./components/ProjectReadme";
+import { GithubProvider } from "./contexts/GithubContext";
 
-function App() {
+const App: React.FC = () => {
+  const [selectedProject, setSelectedProject] = useState<string | null>(null);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <GithubProvider>
+      <div className="App">
+        <h1 className="project-name">GitHub Projects Viewer</h1>
+        <SearchBar />
+        <div className="project-container">
+          <ProjectList onProjectClick={setSelectedProject} />
+          <div className="project-gap" />
+          {selectedProject && <ProjectReadme projectName={selectedProject} />}
+        </div>
+      </div>
+    </GithubProvider>
   );
-}
+};
 
 export default App;
