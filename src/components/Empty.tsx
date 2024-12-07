@@ -1,6 +1,5 @@
 import React from "react";
-import Lottie from "lottie-react";
-import emptyAnimation from '../animations/empty.json'
+import { PuzzlePieceIcon } from "@heroicons/react/24/outline";
 
 interface EmptyProps {
   text: string;
@@ -10,7 +9,7 @@ export const Empty: React.FC<EmptyProps> = ({ text }) => {
 
   return (
     <div className="empty-container">
-      <Lottie style={{width: 250}} animationData={emptyAnimation} loop={true} />
+      <PuzzlePieceIcon style={{color: '#143E7F', width: 48, height: 48}} />
       <p>{text}</p>
     </div>
   );
