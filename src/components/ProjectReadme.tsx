@@ -13,7 +13,7 @@ const ProjectReadme: React.FC<ProjectReadmeProps> = ({ projectName }) => {
   const { user, readme, fetchReadme } = useGithub();
 
   useEffect(() => {
-    if (user && projectName) {
+    if (user && projectName && user) {
       fetchReadme(projectName);
     }
   }, [user, projectName, fetchReadme]);

@@ -12,11 +12,13 @@ body {
 svg:not(.loading-indicator) {
   width: 64px;
   height: 64px;
+  cursor: pointer;
 }
 
 svg.loading-indicator {
   width: 24px;
   height: 24px;
+  cursor: pointer;
 }
 
 .App {
@@ -78,6 +80,7 @@ h4.project-component {
   margin-top: 20px;
   padding: 12px;
   column-gap: 1rem;
+  border-top: 1px solid #ccc;
 }
 
 .project-list {
