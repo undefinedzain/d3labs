@@ -8,7 +8,7 @@ interface ProjectReadmeProps {
   projectName: string;
 }
 
-export const ProjectReadme: React.FC<ProjectReadmeProps> = ({ projectName }) => {
+const ProjectReadme: React.FC<ProjectReadmeProps> = ({ projectName }) => {
   const { user, readme, fetchReadme } = useGithub();
 
   useEffect(() => {
@@ -52,3 +52,5 @@ export const ProjectReadme: React.FC<ProjectReadmeProps> = ({ projectName }) => 
     </div>
   );
 };
+
+export default ProjectReadme;

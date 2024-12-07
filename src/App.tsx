@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 import { SearchBar } from "./components/SearchBar";
 import { ProjectList } from "./components/ProjectList";
-import { ProjectReadme } from "./components/ProjectReadme";
 import { GithubProvider } from "./contexts/GithubContext";
 
 const App: React.FC = () => {
   const [selectedProject, setSelectedProject] = useState<string | null>(null);
+  const ProjectReadme = React.lazy(() => import('./components/ProjectReadme'));
 
   return (
     <GithubProvider>
