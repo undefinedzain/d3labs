@@ -3,6 +3,7 @@ import { SearchBar } from "./components/SearchBar";
 import { ProjectList } from "./components/ProjectList";
 import { GithubProvider } from "./contexts/GithubContext";
 import { Toaster } from "react-hot-toast";
+import { Empty } from "./components/Empty";
 
 const App: React.FC = () => {
     const [selectedProject, setSelectedProject] = useState<string | null>(null);
@@ -20,7 +21,7 @@ const App: React.FC = () => {
                     <div className="readme-container">
                       <h4 className="project-component">README</h4>
                       <div className="readme-result-container">
-                        <Suspense
+                        {selectedProject && <Suspense
                             fallback={
                                 <div className="loading-container">
                                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
@@ -31,7 +32,8 @@ const App: React.FC = () => {
                             }
                         >
                             <ProjectReadme projectName={selectedProject} />
-                        </Suspense>
+                        </Suspense>}
+                        {!selectedProject && <Empty text="No readme to show" />}
                       </div>
                     </div>
                 </div>
