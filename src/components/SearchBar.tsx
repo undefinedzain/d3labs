@@ -23,6 +23,7 @@ export const SearchBar: React.FC = () => {
   return (
     <div className="search-bar">
       <div className="search-container">
+        <p className="white">Github username</p>
         <input
           type="text"
           value={username}
@@ -52,7 +53,7 @@ export const SearchBar: React.FC = () => {
             viewBox="0 0 24 24"
             strokeWidth={1.5}
             stroke="currentColor"
-            style={{ position: "absolute", right: 8, width: 24 }}
+            style={{ position: "absolute", right: 8, top: 24, width: 24 }}
             onClick={() => {
               setUsername("");
               resetState();

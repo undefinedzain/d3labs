@@ -25,14 +25,26 @@ svg.loading-indicator {
   text-align: center;
 }
 
+.white {
+  color: white;
+}
+
+p.white {
+  margin-bottom: 4px;
+}
+
 h3.project-name {
-  margin-top: 64px;
+  margin-top: 32px;
   color: #FFFFFF;
   margin-bottom: 0;
 }
 
 h4.project-component {
   color: #EACC68;
+}
+
+.search-bar-and-list {
+  width: 100%;
 }
 
 .search-bar {
@@ -43,11 +55,10 @@ h4.project-component {
 }
 
 .search-container {
-  width: 320px;
-  margin: 20px;
+  width: 100%;
   position: relative;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
 }
@@ -57,12 +68,13 @@ h4.project-component {
   font-size: 16px;
   border-radius: 12px;
   border: 1px solid #143E7F;
-  width: 100%;
+  width: 96%;
 }
 
 .search-container .loading-indicator {
   position: absolute;
   right: 12px;
+  top: 44px;
 }
 
 .search-container input:focus-visible {
@@ -85,11 +97,11 @@ h4.project-component {
 .project-list {
   background-color: white;
   width: 320px;
-  height: 70vh;
+  height: 500px;
   overflow-y: scroll;
   text-align: left;
   border: 1px solid #143E7F;
-  border-radius: 12px;
+  border-radius: 16px;
   padding: 12px;
   scrollbar-color: #143E7F;
   scrollbar-width: none;
@@ -99,13 +111,14 @@ h4.project-component {
   width: 50%;
   padding: 20px;
   padding-top: 0px;
+  margin-top: 39px;
 }
 
 .readme-result-container {
   background-color: white;
-  height: 70vh;
+  height: 590px;
   padding: 12px;
-  border-radius: 12px;
+  border-radius: 16px;
   color: #333;
   overflow-y: scroll;
   scrollbar-width: none;
@@ -164,13 +177,18 @@ h4.project-component {
   border-radius: 12px;
 }
 
+@media (min-width: 991px) {
+  .search-bar-and-list {
+    width: 360px;
+  }
+}
+
 @media (max-width: 991px) {
   body {
     padding: 0px 24px;
   }
 
   .project-container {
-    display: flex;
     flex-direction: column;
     align-items: center;
     justify-items: stretch;

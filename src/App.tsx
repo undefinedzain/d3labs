@@ -13,11 +13,13 @@ const App: React.FC = () => {
     <GithubProvider>
       <div className="App">
         <h3 className="project-name">GitHub Projects Viewer</h3>
-        <SearchBar />
         <div className="project-container">
-          <ProjectList onProjectClick={setSelectedProject} />
+          <div className="search-bar-and-list">
+            <SearchBar />
+            <hr />
+            <ProjectList onProjectClick={setSelectedProject} />
+          </div>
           <div className="readme-container">
-            <h4 className="project-component">README</h4>
             <div className="readme-result-container">
               {selectedProject && (
                 <Suspense

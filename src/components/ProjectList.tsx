@@ -11,9 +11,9 @@ export const ProjectList: React.FC<ProjectListProps> = ({ onProjectClick }) => {
 
   return (
     <div className="project-list-container">
-      <h4 className="project-component">
+      <p className="white">
         Repo List {repos.length > 0 ? `(${repos.length})` : ""}
-      </h4>
+      </p>
       <div className="project-list">
         {repos.length > 0 ? (
           <ul>
