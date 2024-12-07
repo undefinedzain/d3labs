@@ -1,16 +1,22 @@
+* {
+  font-family: "Inter", sans-serif;
+}
+
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background-color: #143E7F;
 }
 
-svg {
+svg:not(.loading-indicator) {
   width: 64px;
   height: 64px;
+}
+
+svg.loading-indicator {
+  width: 24px;
+  height: 24px;
 }
 
 .App {
